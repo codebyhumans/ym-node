@@ -1,6 +1,6 @@
 {
-  "name": "ym-node",
-  "version": "1.0.0",
+  "name": "@codebyhumans/ym-node",
+  "version": "1.0.3",
   "repository": "https://github.com/suhodolskiy/tellme-api.git",
   "author": "Ilya Suhodolskiy <ilya.suhodolskiy@gmail.com>",
   "main": "dist/index.js",
