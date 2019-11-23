@@ -1,16 +1,15 @@
 import https from 'https'
-import querystring from 'querystring'
 
 interface ISettings {
   id: string | number
 }
 
 interface IRequest {
-  userAgent?: string
+  userAgent: string
   referer?: string
   host: string
-  url: string
-  ip?: string
+  url?: string
+  ip: string
 }
 
 export default class YMNode {
@@ -24,7 +23,7 @@ export default class YMNode {
     return new Promise((resolve, reject) => {
       const path = `/watch/${this.settings.id}/1?rn=${Math.floor(
         Math.random() * 1e6
-      )}&wmode=2&${querystring.stringify(data)}`
+      )}&wmode=2&${this.serialize(data)}`
 
       const req = https.request(
         {
@@ -87,6 +86,15 @@ export default class YMNode {
     this.send(data)
 
     return this
+  }
+
+  private serialize(obj) {
+    var str = []
+    for (var p in obj)
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
+      }
+    return str.join('&')
   }
 
   public req(req: IRequest) {

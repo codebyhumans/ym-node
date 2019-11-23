@@ -1,7 +1,7 @@
 {
   "name": "@codebyhumans/ym-node",
-  "version": "1.0.3",
-  "repository": "https://github.com/suhodolskiy/tellme-api.git",
+  "version": "1.0.5",
+  "repository": "https://github.com/codebyhumans/ym-node.git",
   "author": "Ilya Suhodolskiy <ilya.suhodolskiy@gmail.com>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,9 +9,6 @@
   "scripts": {
     "start": "tsc",
     "start:dev": "tsc -w"
-  },
-  "dependencies": {
-    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.3",

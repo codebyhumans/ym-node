@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const https_1 = __importDefault(require("https"));
-const querystring_1 = __importDefault(require("querystring"));
 class YMNode {
     constructor(settings) {
         this.settings = settings;
@@ -22,7 +21,7 @@ class YMNode {
     send(data) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                const path = `/watch/${this.settings.id}/1?rn=${Math.floor(Math.random() * 1e6)}&wmode=2&${querystring_1.default.stringify(data)}`;
+                const path = `/watch/${this.settings.id}/1?rn=${Math.floor(Math.random() * 1e6)}&wmode=2&${this.serialize(data)}`;
                 const req = https_1.default.request({
                     method: 'GET',
                     host: 'mc.yandex.ru',
@@ -72,6 +71,14 @@ class YMNode {
             this.send(data);
             return this;
         });
+    }
+    serialize(obj) {
+        var str = [];
+        for (var p in obj)
+            if (obj.hasOwnProperty(p)) {
+                str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+            }
+        return str.join('&');
     }
     req(req) {
         this.request = req;
